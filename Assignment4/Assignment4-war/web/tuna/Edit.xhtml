@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTunaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTunaLabel_recordNumber}" for="recordNumber" />
+                    <h:inputText id="recordNumber" value="#{TunaController.selected.recordNumber}" title="#{bundle.EditTunaTitle_recordNumber}" />
+                    <h:outputLabel value="#{bundle.EditTunaLabel_omega}" for="omega" />
+                    <h:inputText id="omega" value="#{TunaController.selected.omega}" title="#{bundle.EditTunaTitle_omega}" />
+                    <h:outputLabel value="#{bundle.EditTunaLabel_lambda}" for="lambda" />
+                    <h:inputText id="lambda" value="#{TunaController.selected.lambda}" title="#{bundle.EditTunaTitle_lambda}" />
+                    <h:outputLabel value="#{bundle.EditTunaLabel_uuid}" for="uuid" />
+                    <h:inputText id="uuid" value="#{TunaController.selected.uuid}" title="#{bundle.EditTunaTitle_uuid}" />
+                    <h:outputLabel value="#{bundle.EditTunaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{TunaController.selected.id}" title="#{bundle.EditTunaTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{TunaController.update}" value="#{bundle.EditTunaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTunaViewLink}"/>
+                <br />
+                <h:commandLink action="#{TunaController.prepareList}" value="#{bundle.EditTunaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTunaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
