@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="dist/Assignment4Library.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/vdinh038/Desktop/hibernate-release-5.2.17.Final/hibernate-release-5.2.17.Final/lib/required/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vdinh038/Desktop/hibernate-release-5.2.17.Final/hibernate-release-5.2.17.Final/lib/required/hibernate-core-5.2.17.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vdinh038/Desktop/hibernate-release-5.2.17.Final/hibernate-release-5.2.17.Final/lib/required/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
