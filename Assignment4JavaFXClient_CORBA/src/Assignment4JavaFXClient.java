@@ -41,7 +41,7 @@ public class Assignment4JavaFXClient extends Application{
     private Label thetaLbl = new Label();
     private Label idLbl = new Label();
     
-    //TextFields for the attributes
+    //TfextFields for the attributes
     private TextField recordNumTxtField = new TextField();
     private TextField omegaTxtField = new TextField();
     private TextField deltaTxtField = new TextField();

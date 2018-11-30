@@ -48,7 +48,7 @@ public class Assignment4ConsoleClient {
             
             //Loop while the client doesnt write quit
             do{
-                System.out.println("Enter Command:");
+                System.out.println("Enter the command 'insert' to start");
                 //Read the line
                 line = br.readLine();
                 switch(line){
