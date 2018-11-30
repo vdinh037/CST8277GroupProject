@@ -43,7 +43,10 @@ public class Assignment4SwingClient extends JFrame{
 
     private JTextField recordNumTxtField = new JTextField();
     private JTextField omegaTxtField = new JTextField();
-    private JTextField lambdaTxtField = new JTextField();
+    private JTextField thetaTxtField = new JTextField();
+    private JTextField deltaTxtField = new JTextField();
+    private JTextField uuidTxtField = new JTextField();
+    private JTextField idTxtField = new JTextField();
     private JTextArea TunaTxtArea = new JTextArea(10, 0); // 10 rows, 0 columns
 
     public Assignment4SwingClient() {
@@ -99,28 +102,44 @@ public class Assignment4SwingClient extends JFrame{
 
         JLabel recordNumLbl = new JLabel("Record Number");
         JLabel omegaLbl = new JLabel("Omega");
-        JLabel lambdaLbl = new JLabel("Lambda");
+        JLabel thetaLbl = new JLabel("Theta");
+        JLabel deltaLbl = new JLabel("Delat");
+        JLabel uuidLbl = new JLabel("UUID");
+        JLabel idLbl = new JLabel("ID");
 
         JButton addJButton = new JButton("Add Tuna");
         JButton viewAllJButton = new JButton("View All Tunas");
+        JButton cleanJButton = new JButton("Clean text fields");
         
         recordNumLbl.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));//top,left,bottom,right
         omegaLbl.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-        lambdaLbl.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        thetaLbl.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        deltaLbl.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        uuidLbl.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        idLbl.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
         TunaTxtArea.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         addJButton.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         viewAllJButton.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-                
+        cleanJButton.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+             
         dataEntryWestJPanel.add(recordNumLbl);
         dataEntryWestJPanel.add(omegaLbl);
-        dataEntryWestJPanel.add(lambdaLbl);
+        dataEntryWestJPanel.add(thetaLbl);
+        dataEntryWestJPanel.add(deltaLbl);
+        dataEntryWestJPanel.add(uuidLbl);
+        dataEntryWestJPanel.add(idLbl);
 
         dataEntryButtonJPanel.add(addJButton);
         dataEntryButtonJPanel.add(viewAllJButton);
+        dataEntryButtonJPanel.add(cleanJButton);
 
         dataEntryCenterJPanel.add(recordNumTxtField);
         dataEntryCenterJPanel.add(omegaTxtField);
-        dataEntryCenterJPanel.add(lambdaTxtField);
+        dataEntryCenterJPanel.add(thetaTxtField);
+        dataEntryCenterJPanel.add(deltaTxtField);
+        dataEntryCenterJPanel.add(uuidTxtField);
+        dataEntryCenterJPanel.add(idTxtField);
         dataEntryCenterJPanel.add(dataEntryButtonJPanel);
 
         dataEntryJPanel.add(dataEntryWestJPanel, BorderLayout.WEST);
@@ -141,7 +160,11 @@ public class Assignment4SwingClient extends JFrame{
                     Tuna Tuna = new Tuna();
                     Tuna.setRecordNumber(Integer.parseInt(recordNumTxtField.getText()));
                     Tuna.setOmega(omegaTxtField.getText());
-                    Tuna.setLambda(lambdaTxtField.getText());
+                    Tuna.setLambda(thetaTxtField.getText());
+                    Tuna.setOmega(deltaTxtField.getText());
+                    Tuna.setLambda(uuidTxtField.getText());
+                    Tuna.setOmega(idTxtField.getText());
+                   
                     remoteTuna.create(Tuna);
                     }
                     else{
@@ -176,14 +199,28 @@ public class Assignment4SwingClient extends JFrame{
                 }
             }
         });
+        
+          /** click on clean button to bound to an event to clean the data hold in the text fields */
+        cleanJButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            recordNumTxtField.setText("");
+            omegaTxtField.setText("");
+            thetaTxtField.setText("");
+            deltaTxtField.setText("");
+            uuidTxtField.setText("");
+            idTxtField.setText("");
+         }
+    });
 
         //this.pack();
-        this.setSize(600, 400);
+        this.setSize(800, 600);
         // null causes window to be centered on screen
         // see: stackoverflow.com (). How to set JFrame to appear centered, regardless of monitor resolution? Retrieved from
         // https://stackoverflow.com/questions/2442599/how-to-set-jframe-to-appear-centered-regardless-of-monitor-resolution
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.setResizable(true);
     }
 
     public static void main(String[] args) {

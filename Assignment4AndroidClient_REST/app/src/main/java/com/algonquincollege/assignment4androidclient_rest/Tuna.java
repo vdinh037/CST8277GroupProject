@@ -6,7 +6,7 @@
 package com.algonquincollege.assignment4androidclient_rest;
 
 /**
- * Created by PVuong Dinh, Parthashokbh Chauhan, Khanh Vuviet, Aksharbhavin Chauhan, Shubham Sachdeva on 2018-11-20.
+ * Created by Vuong Dinh, Parthashokbh Chauhan, Khanh Vuviet, Aksharbhavin Chauhan, Shubham Sachdeva on 2018-11-20.
  * Tuna Entity
  *  Has the same attributes as the Tuna in the database
  */

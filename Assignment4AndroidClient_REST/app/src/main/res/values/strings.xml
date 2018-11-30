@@ -10,7 +10,7 @@ Prentice Hall, ISBN: 0-13-428936-6. Chapter 7 WeatherViewer App pp256-285
 <resources>
     <string name="app_name">Assignment4AndroidClient_REST</string>
     <string name="action_settings">Settings</string>
-    <string name="web_service_url">http://10.70.200.241:8080/Assignment4-war/webresources/entity.tuna/</string>
+    <string name="web_service_url">http://192.168.50.36:8080/Assignment4-war/webresources/entity.tuna/</string>
     <string name="invalid_url">Invalid URL</string>
     <string name="Tuna_id">ID: %s</string>
     <string name="Tuna_recordNumber">Record Number: %s</string>

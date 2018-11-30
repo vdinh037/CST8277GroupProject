@@ -37,7 +37,8 @@ public class Assignment4ConsoleClient {
             System.out.println("about to try for a session...");
             InitialContext ic = new InitialContext();
             //Grab a session
-            session = (TunaFacadeRemote) ic.lookup("java:global/Assignment4/Assignment4-ejb/TunaFacade");
+            session = (TunaFacadeRemote) 
+            ic.lookup("java:global/Assignment4/Assignment4-ejb/TunaFacade");
             System.out.println("Got a session :) ");
             
             System.out.println("Creating and inserting a Tuna record into database");
@@ -57,15 +58,27 @@ public class Assignment4ConsoleClient {
                         
                         //Loop while record number isnt a number
                         do {
-                            System.out.print("Please entera record number: ");
+                            System.out.print("Please enter a record number: ");
                             line = br.readLine();// read the user input
 			} while (!line.matches("-?\\d+")); // while the input isn't only numeric
 			Tuna.setRecordNumber(Integer.parseInt(line)); // set the tuna record number
                         System.out.print("Please enter omega: ");
 			Tuna.setOmega(br.readLine()); // set the tuna omega
-			System.out.print("Please enter lambda: ");
-			Tuna.setLambda(br.readLine()); // set the tuna lambda
+			
+                        System.out.print("Please enter Delta: ");
+			Tuna.setDelta(br.readLine()); // set the tuna Delta
+                        
+                        System.out.print("Please enter Theta: ");
+			Tuna.setTheta(br.readLine()); // set the tuna Theta   
+                        
+                        System.out.print("Please enter UUID: ");
+			Tuna.setUuid(br.readLine()); // set the tuna UUID
+                        
+                        System.out.print("Please enter ID: ");
+			Tuna.setId(Long.valueOf(br.readLine())); // set the tuna ID
+                        
                         session.create(Tuna);
+                        
                         break;
                     case "get" :
                         System.out.println("Listing contents of database");

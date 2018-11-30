@@ -1,1 +1,17 @@
+/Assignment4/build/
+/Assignment4/dist/
+/Assignment4Library/dist/
+/Assignment4/nbproject/private/
+/Assignment4/Assignment4-war/nbproject/private/
+/Assignment4/Assignment4-ejb/nbproject/private/
+/Assignment4Library/nbproject/private/
 /Assignment4Library/build/
+/Assignment4/Assignment4-war/build/
+/Assignment4JavaFX_REST/build/
+/Assignment4ConsoleClient_CORBA/nbproject/private/
+/Assignment4JavaFXClient_CORBA/nbproject/private/
+/Assignment4SwingClient_CORBA/nbproject/private/
+/Assignment4ConsoleClient_CORBA/build/
+/Assignment4JavaFXClient_CORBA/build/
+/Assignment4SwingClient_CORBA/build/
+/Assignment4ConsoleClient_CORBA/dist/

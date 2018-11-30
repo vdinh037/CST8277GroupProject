@@ -36,18 +36,24 @@ public class Assignment4JavaFXClient extends Application{
     //Labels for the attribute names
     private Label recordNumLbl = new Label();
     private Label omegaLbl = new Label();
-    private Label lambdaLbl = new Label();
+    private Label deltaLbl = new Label();
+    private Label uuidLbl = new Label();
+    private Label thetaLbl = new Label();
+    private Label idLbl = new Label();
     
     //TextFields for the attributes
     private TextField recordNumTxtField = new TextField();
     private TextField omegaTxtField = new TextField();
-    private TextField lambdaTxtField = new TextField();
+    private TextField deltaTxtField = new TextField();
+    private TextField uuidTxtField = new TextField();
+    private TextField thetaTxtField = new TextField();
+    private TextField idTxtField = new TextField();
     private TextArea TunaTxtArea = new TextArea();
     
-    //Two buttons, one to insert and one to view data
+    //Thre buttons, one to insert and one to view data, one for clean
     private Button viewButton = new Button();
     private Button addButton = new Button();
-
+    
     private static TunaFacadeRemote remoteTuna = null;
 
     @Override
@@ -56,7 +62,10 @@ public class Assignment4JavaFXClient extends Application{
         //Set the label text
         recordNumLbl.setText("Record Number");
         omegaLbl.setText("Omega");
-        lambdaLbl.setText("Lambda");
+        deltaLbl.setText("Delta");
+        idLbl.setText ("ID");
+        thetaLbl.setText ("Theta");
+        uuidLbl.setText ("UUID");
         
         //Set the view button text
         viewButton.setText("Show Tunas");
@@ -95,7 +104,12 @@ public class Assignment4JavaFXClient extends Application{
                         //Set the attributes
                         Tuna.setRecordNumber(Integer.parseInt(recordNumTxtField.getText()));
                         Tuna.setOmega(omegaTxtField.getText());
-                        Tuna.setLambda(lambdaTxtField.getText());
+                        Tuna.setTheta(thetaTxtField.getText());
+                        Tuna.setDelta(thetaTxtField.getText());
+                        Tuna.setUuid(uuidTxtField.getText());
+                        Tuna.setId(Long.valueOf(idTxtField.getText()));
+                        
+                        
                         //Insert it
                         remoteTuna.create(Tuna);
                     } else {
@@ -111,7 +125,7 @@ public class Assignment4JavaFXClient extends Application{
         HBox buttonsHBox = new HBox();
         buttonsHBox.setSpacing(10);
         buttonsHBox.setPadding(new Insets(10, 10, 10, 10));
-        buttonsHBox.setAlignment(Pos.CENTER_RIGHT);
+        buttonsHBox.setAlignment(Pos.CENTER);
         buttonsHBox.getChildren().addAll(addButton, viewButton);
 
         //Root Pane for the application
@@ -121,18 +135,27 @@ public class Assignment4JavaFXClient extends Application{
         root.add(recordNumTxtField, 2, 1); // column 2, row 1
         root.add(omegaLbl, 1, 2); // column 1, row 2
         root.add(omegaTxtField, 2, 2); // column 2, row 2
-        root.add(lambdaLbl, 1, 3); // column 1, row 2
-        root.add(lambdaTxtField, 2, 3); // column 2, row 2
-        root.add(buttonsHBox, 2, 4); // column 2, row 3
-        root.add(TunaTxtArea, 2, 5); // column 2, row 4
+        root.add(thetaLbl, 1, 3); // column 1, row 3
+        root.add(thetaTxtField, 2, 3); // column 2, row 3
+        root.add(deltaLbl, 1, 4); // column 1, row 4
+        root.add(deltaTxtField, 2, 4); //column 2, row 4
+        root.add(uuidLbl, 1, 5);
+        root.add(uuidTxtField, 2, 5);
+        root.add(idLbl, 1, 6); 
+        root.add(idTxtField, 2, 6);
+        
+        root.add(buttonsHBox, 2, 7); // column 2, row 7
+        root.add(TunaTxtArea, 2, 8); // column 2, row 8
         root.setHgap(10);
         root.setVgap(10);
         //As well as the margin
         root.setMargin(TunaTxtArea, new Insets(0, 10, 10, 0)); // top, right, bottom, left
         root.setMargin(recordNumTxtField, new Insets(0, 10, 0, 0));
         root.setMargin(omegaTxtField, new Insets(0, 10, 0, 0));
-        root.setMargin(lambdaTxtField, new Insets(0, 10, 0, 0));
-
+        root.setMargin(thetaTxtField, new Insets(0, 10, 0, 0));
+        root.setMargin(deltaTxtField, new Insets(0, 10, 0, 0));
+        root.setMargin(uuidTxtField, new Insets(0, 10, 0, 0));
+        root.setMargin(idTxtField, new Insets(0, 10, 0, 0));
         Scene scene = new Scene(root);
 
         //Application title

@@ -72,42 +72,68 @@ public class MainActivity extends AppCompatActivity {
                         Snackbar.make(findViewById(R.id.coordinatorLayout),
                                 R.string.invalid_url, Snackbar.LENGTH_LONG).show();
                     }
-                }
-                catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
     }
 
-    // programmatically dismiss keyboard when user touches FAB
+    /*
+     *programmatically dismiss keyboard when user touches FAB
+     */
     private void dismissKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(
                 Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    // create web service URL using id specified, if there was an id provided by user
+    /*
+     *create web service URL using id specified, if there was an id provided by user
+     */
     private URL createURL(String id) {
         String baseUrl = getString(R.string.web_service_url);
         String urlString = null;
         try {
-            if(id.length() < 1) { // search field was empty
+            if (id.length() < 1) { // search field was empty
                 urlString = baseUrl;
-            }
-            else{ // search field has an id
+            } else { // search field has an id
                 urlString = baseUrl + URLEncoder.encode(id, "UTF-8");
             }
             return new URL(urlString);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null; // URL was malformed
     }
 
-    // makes the REST web service call to get Tuna data and
-    // saves the data to a local HTML file
+    /*
+     *create Tuna objects from JSONArray containing the Tuna records
+     */
+    private void convertJSONtoArrayList(JSONArray list) {
+        TunaList.clear(); // clear old Tuna data
+
+        try {
+            // convert each element of list to a Tuna object
+            for (int i = 0; i < list.length(); ++i) {
+                JSONObject Tuna = list.getJSONObject(i); // get one Tuna's data
+                Log.i("Hi there, it's vuong!", Tuna.toString());
+                // add new Tuna object to TunaList
+                TunaList.add(new Tuna(
+                        Tuna.getString("id"),
+                        Integer.toString(Tuna.getInt("recordNumber")),
+                        Tuna.getString("omega"),
+                        Tuna.getString("lambda"),
+                        Tuna.getString("uuid")));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /* makes the REST web service call to get Tuna data and
+    * saves the data to a local HTML file
+    */
     private class GetTunaTask
             extends AsyncTask<URL, Void, JSONArray> {
 
@@ -122,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 // from: https://stackoverflow.com/questions/17735442/how-to-switch-glassfish-from-outputing-in-json-to-xml
                 // from: https://stackoverflow.com/questions/44572315/change-the-default-rest-response-to-json-instead-xml?rq=1
                 // from: https://stackoverflow.com/questions/14343453/java-set-accept-on-http-get
-                connection.addRequestProperty("Accept","application/json");
+                connection.addRequestProperty("Accept", "application/json");
 
                 int response = connection.getResponseCode();
 
@@ -137,8 +163,7 @@ public class MainActivity extends AppCompatActivity {
                         while ((line = reader.readLine()) != null) {
                             builder.append(line);
                         }
-                    }
-                    catch (IOException e) {
+                    } catch (IOException e) {
                         Snackbar.make(findViewById(R.id.coordinatorLayout),
                                 R.string.read_error, Snackbar.LENGTH_LONG).show();
                         e.printStackTrace();
@@ -148,57 +173,34 @@ public class MainActivity extends AppCompatActivity {
                     // This is a 'hack' for now to modify the string to enclose it in [ and ] if the [ is missing.
                     // more research needed...
                     String json = builder.toString();
-                    if ( ! json.startsWith("[") ){
+                    if (!json.startsWith("[")) {
                         json = String.format("[%s]", json);
                     }
 
                     return new JSONArray(json);
-                }
-                else {
+                } else {
                     Snackbar.make(findViewById(R.id.coordinatorLayout),
                             R.string.connect_error, Snackbar.LENGTH_LONG).show();
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 Snackbar.make(findViewById(R.id.coordinatorLayout),
                         R.string.connect_error, Snackbar.LENGTH_LONG).show();
                 e.printStackTrace();
-            }
-            finally {
+            } finally {
                 connection.disconnect(); // close the HttpURLConnection
             }
 
             return null;
         }
 
-        // process JSON response and update ListView
+        /*
+         *process JSON response and update ListView
+         */
         @Override
         protected void onPostExecute(JSONArray tunas) {
             convertJSONtoArrayList(tunas); // repopulate TunaList
             TunaArrayAdapter.notifyDataSetChanged(); // rebind to ListView
             TunaListView.smoothScrollToPosition(0); // scroll to top
-        }
-    }
-    // create Tuna objects from JSONArray containing the Tuna records
-    private void convertJSONtoArrayList(JSONArray list) {
-        TunaList.clear(); // clear old Tuna data
-
-        try {
-            // convert each element of list to a Tuna object
-            for (int i = 0; i < list.length(); ++i) {
-                JSONObject Tuna = list.getJSONObject(i); // get one Tuna's data
-                Log.i("HEEEEYYYY", Tuna.toString());
-                // add new Tuna object to TunaList
-                TunaList.add(new Tuna(
-                        Tuna.getString("id"),
-                        Integer.toString(Tuna.getInt("recordNumber")),
-                        Tuna.getString("omega"),
-                        Tuna.getString("lambda"),
-                        Tuna.getString("uuid")));
-            }
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 }

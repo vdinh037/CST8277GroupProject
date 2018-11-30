@@ -29,12 +29,17 @@ public class TunaArrayAdapter extends ArrayAdapter<Tuna> {
         TextView uuidTextView;
     }
 
-    // constructor to initialize superclass inherited members
+    /*
+    * constructor to initialize superclass inherited members
+    */
     public TunaArrayAdapter(Context context, List<Tuna> tunas) {
         super(context, -1, tunas);
     }
 
-    // creates the custom views for the ListView's items
+    //
+    /*
+     * creates the custom views for the ListView's items
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         try {

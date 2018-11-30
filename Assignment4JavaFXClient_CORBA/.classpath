@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="dist/Assignment4JavaFXClient_CORBA.jar"/>
-	<classpathentry kind="lib" path="dist/lib/Assignment4Library.jar"/>
-	<classpathentry kind="lib" path="dist/lib/gf-client.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="build/classes"/>
-</classpath>

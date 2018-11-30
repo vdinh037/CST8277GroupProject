@@ -35,6 +35,8 @@ public class Tuna implements Serializable {
     private String omega;
     private String lambda;
     private String uuid;
+    private String theta;
+    private String delta;
 
     public Tuna(){
         this.setUuid(UUID.randomUUID().toString());
@@ -71,7 +73,23 @@ public class Tuna implements Serializable {
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
+    
+    public String getTheta() {
+        return theta;
+    }
 
+    public void setTheta(String theta) {
+        this.theta = theta;
+    }
+
+   public String getDelta() {
+        return delta;
+    }
+
+    public void setDelta(String delta) {
+        this.delta = delta;
+    }
+ 
     public Long getId() {
         return id;
     }
