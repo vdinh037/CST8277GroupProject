@@ -41,6 +41,9 @@ public class TunaSearchController implements Initializable {
     @FXML
     private TableView<Tuna> tableView;
 
+    /*
+    * Handles the search button action
+    */
     @FXML
     private void handleSearchAction() {
         WebTarget clientTarget;

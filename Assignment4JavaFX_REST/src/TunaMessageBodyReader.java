@@ -35,6 +35,9 @@ public boolean isReadable(Class<?> type, Type type1, Annotation[] antns,
     return true;
 }
 
+/*
+* Read from the list of tuna
+*/
 @Override
 public List<Tuna> readFrom(Class<List<Tuna>> type, Type type1, Annotation[] antns, MediaType mt, MultivaluedMap<String, String> mm, InputStream in) throws IOException,  WebApplicationException {
     if (mt.getType().equals("application") && mt.getSubtype().equals("json")) {

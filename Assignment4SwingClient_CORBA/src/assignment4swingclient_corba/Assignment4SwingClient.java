@@ -38,9 +38,10 @@ import javax.swing.ScrollPaneConstants;
  */
 public class Assignment4SwingClient extends JFrame{
 
-
+       /* TunaFacadeRemote object instance */
     private final TunaFacadeRemote remoteTuna;
 
+    /* variables for text fields */
     private JTextField recordNumTxtField = new JTextField();
     private JTextField omegaTxtField = new JTextField();
     private JTextField thetaTxtField = new JTextField();
@@ -49,11 +50,17 @@ public class Assignment4SwingClient extends JFrame{
     private JTextField idTxtField = new JTextField();
     private JTextArea TunaTxtArea = new JTextArea(10, 0); // 10 rows, 0 columns
 
+    /*
+    * Constructor
+    */
     public Assignment4SwingClient() {
         buildGUI();
         remoteTuna = getRemoteSession();
     }
 
+    /*
+    * Get the reomte session by looking up in the tuna facade
+    */
     private TunaFacadeRemote getRemoteSession() {
         TunaFacadeRemote session = null;
         
@@ -75,6 +82,9 @@ public class Assignment4SwingClient extends JFrame{
         return session;
     }
 
+    /*
+    * The gui for adding tuna objects
+    */
     private void buildGUI() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Swing Client Demo - CORBA");
